@@ -11,7 +11,6 @@ String? userid;
 
 class SignupProvider with ChangeNotifier {
   bool? loading = false;
-
   signupOnFirebase(email, passwd, first, last, context) async {
     try {
       loading = true;
@@ -47,7 +46,7 @@ class SignupProvider with ChangeNotifier {
     passwd,
   ) async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    userid = auth.currentUser!.uid;
+    userid = auth.currentUser?.uid;
     FirebaseFirestore db = FirebaseFirestore.instance;
     await db.collection(CommonKeys.Key_db).doc(userid).set({
       CommonKeys.Key_Field_first: first,

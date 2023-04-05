@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:task_2_ui_ui_firebase_firestore/Views/home.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/login.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/CommonKeys.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
@@ -68,15 +67,17 @@ class services {
         .then((value) => sval = value);
 
     if (sval == CommonKeys.String_true) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
-          (Route<dynamic> route) => false);
+      // Navigator.pushAndRemoveUntil(
+      //     context,
+      //     MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
+      //     (Route<dynamic> route) => false);
+      return true;
     } else {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
-          (Route<dynamic> route) => false);
+      // Navigator.pushAndRemoveUntil(
+      //     context,
+      //     MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
+      //     (Route<dynamic> route) => false);
+      return false;
     }
   }
 }

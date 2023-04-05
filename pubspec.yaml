@@ -42,6 +42,8 @@ dependencies:
   cloud_firestore: ^4.4.5
   firebase_storage: ^11.1.0
   flutter_secure_storage: ^8.0.0
+  flutter_native_splash: ^2.2.19
+
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.19
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/splash_Logo.png
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
