@@ -5,6 +5,8 @@ import 'package:task_2_ui_ui_firebase_firestore/Views/login.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/ConstantStrings.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/services.dart';
 
+bool? has;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -19,7 +21,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Widget initial = Container();
+  Widget? initial;
 
   @override
   void initState() {
@@ -30,19 +32,18 @@ class _MyAppState extends State<MyApp> {
   void readSession() async {
     var hasSession = await services.readSession(context);
     setState(() {
-      initial = hasSession ? HomeScreen() : LoginScreen();
+      has = hasSession;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: ConstatntStrings.Task_name,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: initial,
-    );
+        title: ConstatntStrings.Task_name,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: has == true ? HomeScreen() : LoginScreen());
   }
 }

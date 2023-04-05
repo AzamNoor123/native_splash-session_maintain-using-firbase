@@ -54,43 +54,52 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Consumer<HomePageProvider>(
             builder: (context, provider2, child) => Form(
                 key: formkey2,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height *
-                          DimenResource.D_0_2,
-                    ),
-                    firstTextField(
-                            fieldenable: provider2.isenable, firstctr: firstctr)
-                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
-                        .padding(),
-                    lastTextField(
-                            fieldenable: provider2.isenable, lastctr: lastctr)
-                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
-                        .padding(),
-                    emailTextField(
-                      fieldenable: provider2.isenable,
-                      emaictr: emailctr,
-                    )
-                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
-                        .padding(),
-                    provider2.isenable == false
-                        ? ElevatedButton(
-                            onPressed: () async {
-                              provider2.fieldEnabled();
-                            },
-                            child: Text(StringResources.edit_btn.captilize))
-                        : ElevatedButton(
-                            onPressed: () {
-                              if (formkey2.currentState!.validate()) {
-                                provider2.fieldDisabled();
-                                provider2.update(
-                                    firstctr.text, lastctr.text, emailctr.text);
-                              }
-                            },
-                            child: Text(StringResources.done_btn.captilize)),
-                  ],
-                )),
+                child: provider2.loading == true
+                    ? const CircularProgressIndicator()
+                    : Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height *
+                                DimenResource.D_0_2,
+                          ),
+                          firstTextField(
+                                  fieldenable: provider2.isenable,
+                                  firstctr: firstctr)
+                              .cornerRadius(
+                                  BorderRadius.circular(DimenResource.D_10))
+                              .padding(),
+                          lastTextField(
+                                  fieldenable: provider2.isenable,
+                                  lastctr: lastctr)
+                              .cornerRadius(
+                                  BorderRadius.circular(DimenResource.D_10))
+                              .padding(),
+                          emailTextField(
+                            fieldenable: provider2.isenable,
+                            emaictr: emailctr,
+                          )
+                              .cornerRadius(
+                                  BorderRadius.circular(DimenResource.D_10))
+                              .padding(),
+                          provider2.isenable == false
+                              ? ElevatedButton(
+                                  onPressed: () async {
+                                    provider2.fieldEnabled();
+                                  },
+                                  child:
+                                      Text(StringResources.edit_btn.captilize))
+                              : ElevatedButton(
+                                  onPressed: () {
+                                    if (formkey2.currentState!.validate()) {
+                                      provider2.fieldDisabled();
+                                      provider2.update(firstctr.text,
+                                          lastctr.text, emailctr.text);
+                                    }
+                                  },
+                                  child:
+                                      Text(StringResources.done_btn.captilize)),
+                        ],
+                      )),
           ),
         ),
       )),

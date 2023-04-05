@@ -5,6 +5,7 @@ import 'package:task_2_ui_ui_firebase_firestore/utills/CommonKeys.dart';
 
 class HomePageProvider with ChangeNotifier {
   bool isenable = false;
+  bool loading = false;
   String? userid;
 
   fieldEnabled() {
@@ -19,7 +20,7 @@ class HomePageProvider with ChangeNotifier {
 
   Future<void> fatchingdata(TextEditingController firstctr,
       TextEditingController lastctr, TextEditingController emailctr) async {
-    bool loading = true;
+    loading = true;
     FirebaseAuth auth = FirebaseAuth.instance;
 
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -35,8 +36,10 @@ class HomePageProvider with ChangeNotifier {
         lastctr.text = documentSnapshot[CommonKeys.Key_Field_last];
         emailctr.text = documentSnapshot[CommonKeys.Key_Field_email];
         loading = false;
+        notifyListeners();
       } else {
         loading = false;
+        notifyListeners();
       }
     });
   }
