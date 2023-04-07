@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/home.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/login.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/ConstantStrings.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/constants_resource.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/services.dart';
 
 bool? has;

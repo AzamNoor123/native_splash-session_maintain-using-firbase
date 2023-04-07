@@ -2,10 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/CommonKeys.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/ConstantStrings.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/Dimension.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/strings_extension.dart';
+
+import '../utills/constants_resource.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage();
@@ -29,7 +30,7 @@ class DetailPage extends StatelessWidget {
                 return Text(StringResources.error_msg.captilize);
               } else if (snapshot.hasData) {
                 return ListView.builder(
-                    itemCount: snapshot.data!.docs.length,
+                    itemCount: snapshot.data?.docs.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +39,7 @@ class DetailPage extends StatelessWidget {
                             height: DimenResource.D_20,
                           ),
                           Text(
-                            'First Name:${snapshot.data!.docs[index]['First']}',
+                            'First Name:${snapshot.data?.docs[index]['First']}',
                             style:
                                 const TextStyle(fontSize: DimenResource.D_20),
                           ),
@@ -46,7 +47,7 @@ class DetailPage extends StatelessWidget {
                             height: DimenResource.D_20,
                           ),
                           Text(
-                            "LAst Name:${snapshot.data!.docs[index]['Last']}",
+                            "LAst Name:${snapshot.data?.docs[index]['Last']}",
                             style:
                                 const TextStyle(fontSize: DimenResource.D_20),
                           ),
@@ -54,7 +55,7 @@ class DetailPage extends StatelessWidget {
                             height: DimenResource.D_20,
                           ),
                           Text(
-                            "Email:${snapshot.data!.docs[index]["Email"]}",
+                            "Email:${snapshot.data?.docs[index]["Email"]}",
                             style:
                                 const TextStyle(fontSize: DimenResource.D_20),
                           ),

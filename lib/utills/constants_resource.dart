@@ -17,4 +17,7 @@ class ConstatntStrings {
   static int Popup_menu_item_1 = 1;
   static int Passwd_length = 5;
   static String Splash_image = "assets/splash_Logo.png";
+
+  static RegExp regex =
+      RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
 }

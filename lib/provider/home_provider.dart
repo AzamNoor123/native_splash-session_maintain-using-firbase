@@ -24,7 +24,7 @@ class HomePageProvider with ChangeNotifier {
     FirebaseAuth auth = FirebaseAuth.instance;
 
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    String userid = auth.currentUser!.uid;
+    String? userid = auth.currentUser?.uid;
 
     await firestore
         .collection(CommonKeys.Key_db)
@@ -45,7 +45,7 @@ class HomePageProvider with ChangeNotifier {
   }
 
   update(first, last, email) {
-    userid = FirebaseAuth.instance.currentUser!.uid;
+    userid = FirebaseAuth.instance.currentUser?.uid;
     FirebaseFirestore.instance
         .collection(CommonKeys.Key_db)
         .doc(userid)

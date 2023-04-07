@@ -4,7 +4,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/login.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/CommonKeys.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/context_extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/strings_extension.dart';
 
 import '../provider/signup_provider.dart';
 
@@ -67,16 +68,8 @@ class services {
         .then((value) => sval = value);
 
     if (sval == CommonKeys.String_true) {
-      // Navigator.pushAndRemoveUntil(
-      //     context,
-      //     MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
-      //     (Route<dynamic> route) => false);
       return true;
     } else {
-      // Navigator.pushAndRemoveUntil(
-      //     context,
-      //     MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
-      //     (Route<dynamic> route) => false);
       return false;
     }
   }

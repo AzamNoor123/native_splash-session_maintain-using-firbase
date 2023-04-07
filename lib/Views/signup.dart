@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_2_ui_ui_firebase_firestore/provider/signup_provider.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/ConstantStrings.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/Dimension.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/context_extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/strings_extension.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/widgets_extensions.dart';
 
-import '../utills/custom_Widgets.dart';
+import '../utills/constants_resource.dart';
+import '../utills/custom_widgets/custom_text_field.dart';
 
 class SignupSreen extends StatefulWidget {
   const SignupSreen({super.key});
@@ -52,21 +54,59 @@ class _SignupSreenState extends State<SignupSreen> {
                       height: MediaQuery.of(context).size.height *
                           DimenResource.D_0_2,
                     ),
-                    firstTextField(fieldenable: true, firstctr: firstctr)
-                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
-                        .padding(),
-                    lastTextField(fieldenable: true, lastctr: lastctr)
-                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
-                        .padding(),
-                    emailTextField(
+                    CustomTextField(
+                      controller: firstctr,
                       fieldenable: true,
-                      emaictr: emailctr,
+                      hint: StringResources.hint_first,
+                      name: StringResources.l_first,
+                      validator: (p0) {
+                        if (p0 == 0 || p0!.isEmpty) {
+                          return StringResources.hint_first;
+                        }
+                      },
                     )
                         .cornerRadius(BorderRadius.circular(DimenResource.D_10))
                         .padding(),
-                    passwdTextField(
-                      enablefield: true,
-                      passwdctr: passwdctr,
+                    CustomTextField(
+                      controller: lastctr,
+                      fieldenable: true,
+                      hint: StringResources.hint_last,
+                      name: StringResources.l_last,
+                      validator: (p0) {
+                        if (p0 == 0 || p0!.isEmpty) {
+                          return StringResources.hint_last;
+                        }
+                      },
+                    )
+                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
+                        .padding(),
+                    CustomTextField(
+                            controller: emailctr,
+                            hint: StringResources.hint_email,
+                            name: StringResources.l_email,
+                            fieldenable: true,
+                            validator: (value) {
+                              if (value == 0 || value!.isEmpty) {
+                                return StringResources.hint_email.captilize;
+                              } else if (!value.isValidEmail()) {
+                                return StringResources.enter_valid_email;
+                              }
+                            })
+                        .cornerRadius(BorderRadius.circular(DimenResource.D_10))
+                        .padding(),
+                    CustomTextField(
+                      controller: passwdctr,
+                      fieldenable: true,
+                      textObscure: true,
+                      hint: StringResources.hint_passwd,
+                      name: StringResources.l_passwd,
+                      validator: (p0) {
+                        if (p0 == 0 || p0!.isEmpty) {
+                          return StringResources.hint_passwd;
+                        } else if (p0.length <= 5) {
+                          return StringResources.passwdValid;
+                        }
+                      },
                     )
                         .cornerRadius(BorderRadius.circular(DimenResource.D_10))
                         .padding(),

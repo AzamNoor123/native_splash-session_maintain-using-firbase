@@ -3,8 +3,6 @@ class StringResources {
   static String entLnm = 'enetr last name ';
   static String enter_email = 'enter valid email';
   static String enter_valid_email = 'Please enter an email address';
-  static RegExp regex =
-      RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
   static String passwdValid = 'enetr password greater then 6 ';
   static String failled = 'Failled';
   static String newuser = "If you are new please click below";

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/home.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/strings_extension.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/services.dart';
 
 class LoginPageProvider with ChangeNotifier {

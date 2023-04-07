@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/ConstantStrings.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/Dimension.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/widgets_extensions.dart';
 
+import '../utills/constants_resource.dart';
 import '../utills/services.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen();
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();

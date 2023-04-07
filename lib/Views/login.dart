@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/signup.dart';
 import 'package:task_2_ui_ui_firebase_firestore/provider/login_provider.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/ConstantStrings.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/Dimension.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Widgets.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/context_extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/strings_extension.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/widgets_extensions.dart';
+
+import '../utills/constants_resource.dart';
+import '../utills/custom_widgets/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -51,15 +54,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: MediaQuery.of(context).size.height *
                           DimenResource.D_0_2,
                     ),
-                    emailTextField(
-                      emaictr: emailController,
-                      fieldenable: true,
-                    )
+                    CustomTextField(
+                            controller: emailController,
+                            hint: StringResources.hint_email,
+                            name: StringResources.l_email,
+                            fieldenable: true,
+                            validator: (value) {
+                              if (value == 0 || value!.isEmpty) {
+                                return StringResources.hint_email.captilize;
+                              } else if (!value.isValidEmail()) {
+                                return StringResources.enter_valid_email;
+                              }
+                            })
                         .cornerRadius(BorderRadius.circular(DimenResource.D_10))
                         .padding(),
-                    passwdTextField(
-                      enablefield: true,
-                      passwdctr: passwordController,
+                    CustomTextField(
+                      controller: passwordController,
+                      fieldenable: true,
+                      textObscure: true,
+                      hint: StringResources.hint_passwd,
+                      name: StringResources.l_passwd,
+                      validator: (p0) {
+                        if (p0 == 0 || p0!.isEmpty) {
+                          return StringResources.hint_passwd;
+                        } else if (p0.length <= 5) {
+                          return StringResources.passwdValid;
+                        }
+                      },
                     )
                         .cornerRadius(BorderRadius.circular(DimenResource.D_10))
                         .padding(),

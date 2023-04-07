@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:task_2_ui_ui_firebase_firestore/Views/home.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/CommonKeys.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/StringResources.dart';
-import 'package:task_2_ui_ui_firebase_firestore/utills/custom_Extensions.dart';
+import 'package:task_2_ui_ui_firebase_firestore/utills/helper/strings_extension.dart';
 import 'package:task_2_ui_ui_firebase_firestore/utills/services.dart';
 
 String? userid;
@@ -18,7 +18,7 @@ class SignupProvider with ChangeNotifier {
       FirebaseAuth auth = FirebaseAuth.instance;
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: passwd);
-      final User user = userCredential.user!;
+      final User? user = userCredential.user;
       sendDataOnFirestore(first, last, email, passwd);
       loading = false;
       notifyListeners();
